@@ -23,10 +23,15 @@ function App() {
     const res = await data.json()
     console.log(res)
   }
-  addEventListener('load', async () => {
-    let sw = await navigator.serviceWorker.register('./sw.js')
-    console.log(sw)
-  })
+  window.addEventListener('load', async () => {
+    try {
+      const sw = await navigator.serviceWorker.register('/sw.js'); // absolute path
+      console.log('Service Worker registered:', sw);
+    } catch (err) {
+      console.error('SW registration failed:', err);
+    }
+  });
+
   async function subscribe() {
     let sw = await navigator.serviceWorker.ready;
     let push = await sw.pushManager.subscribe({
