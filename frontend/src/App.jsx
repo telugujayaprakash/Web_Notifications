@@ -9,7 +9,7 @@ function App() {
     e.preventDefault();
     console.log(title)
     console.log(disc)
-    const data = await fetch('http://localhost:8000/', {
+    const data = await fetch('https://web-notifications-p647.onrender.com', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
